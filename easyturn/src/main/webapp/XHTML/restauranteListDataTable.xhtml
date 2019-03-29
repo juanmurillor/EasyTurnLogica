@@ -1,0 +1,116 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableRestaurante" header="RestauranteData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{restauranteView.data}" var="restaurante"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{restaurante.idrestaurante}" sortBy="#{restaurante.idrestaurante}" >
+										 <f:facet name="header">
+										<h:outputText value="idrestaurante"/>
+										</f:facet>
+										 <h:outputText value="#{restaurante.idrestaurante}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{restaurante.descripcionrestaurante}" sortBy="#{restaurante.descripcionrestaurante}" >
+										 <f:facet name="header">
+										<h:outputText value="Descripcionrestaurante"/>
+										</f:facet>
+										 <h:outputText value="#{restaurante.descripcionrestaurante}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{restaurante.imagenrestaurante}" sortBy="#{restaurante.imagenrestaurante}" >
+										 <f:facet name="header">
+										<h:outputText value="Imagenrestaurante"/>
+										</f:facet>
+										 <h:outputText value="#{restaurante.imagenrestaurante}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{restaurante.nombrerestaurante}" sortBy="#{restaurante.nombrerestaurante}" >
+										 <f:facet name="header">
+										<h:outputText value="Nombrerestaurante"/>
+										</f:facet>
+										 <h:outputText value="#{restaurante.nombrerestaurante}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{restaurante.telefonorestaurante}" sortBy="#{restaurante.telefonorestaurante}" >
+										 <f:facet name="header">
+										<h:outputText value="Telefonorestaurante"/>
+										</f:facet>
+										 <h:outputText value="#{restaurante.telefonorestaurante}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{restaurante.email_Usuarios}" sortBy="#{restaurante.email_Usuarios}" >
+										 <f:facet name="header">
+										<h:outputText value="Email_Usuarios"/>
+										</f:facet>
+										 <h:outputText value="#{restaurante.email_Usuarios}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogRestaurante"
+										actionListener="#{restauranteView.action_edit}">
+										<f:attribute name="selectedRestaurante" value="#{restaurante}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{restauranteView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedRestaurante" value="#{restaurante}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{restauranteView.action_new()}" update=":dialogRestaurante" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogRestaurante" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{restauranteView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelRestaurante" header="Restaurante">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdrestaurante" value="Idrestaurante"/>
+									 <p:inputText id="txtIdrestaurante" binding="#{restauranteView.txtIdrestaurante}">
+									 <p:ajax update=":dialogRestaurante" listener="#{restauranteView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgDescripcionrestaurante" value=" Descripcionrestaurante"/>
+									<p:inputText id="txtDescripcionrestaurante" disabled="true" binding="#{restauranteView.txtDescripcionrestaurante}"/>
+																		<h:outputText id="msgImagenrestaurante" value=" Imagenrestaurante"/>
+									<p:inputText id="txtImagenrestaurante" disabled="true" binding="#{restauranteView.txtImagenrestaurante}"/>
+																		<h:outputText id="msgNombrerestaurante" value=" Nombrerestaurante"/>
+									<p:inputText id="txtNombrerestaurante" disabled="true" binding="#{restauranteView.txtNombrerestaurante}"/>
+																		<h:outputText id="msgTelefonorestaurante" value=" Telefonorestaurante"/>
+									<p:inputText id="txtTelefonorestaurante" disabled="true" binding="#{restauranteView.txtTelefonorestaurante}"/>
+																		<h:outputText id="msgEmail_Usuarios" value=" Email_Usuarios"/>
+									<p:inputText id="txtEmail_Usuarios" disabled="true" binding="#{restauranteView.txtEmail_Usuarios}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{restauranteView.btnSave}" value="Save" action="#{restauranteView.action_save()}" update=":dialogRestaurante :frm:panelDataTableRestaurante" />
+									<p:commandButton id="btnClear" value="Clear" action="#{restauranteView.action_clear()}" update=":dialogRestaurante" />
+									<p:commandButton id="btnExit" value="Exit" action="#{restauranteView.action_closeDialog()}" update=":dialogRestaurante" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

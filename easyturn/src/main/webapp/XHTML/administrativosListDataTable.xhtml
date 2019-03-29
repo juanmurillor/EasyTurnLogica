@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableAdministrativos" header="AdministrativosData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{administrativosView.data}" var="administrativos"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{administrativos.idusuadministrativo}" sortBy="#{administrativos.idusuadministrativo}" >
+										 <f:facet name="header">
+										<h:outputText value="idusuadministrativo"/>
+										</f:facet>
+										 <h:outputText value="#{administrativos.idusuadministrativo}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{administrativos.idtipousuadmin_Tipousuadmin}" sortBy="#{administrativos.idtipousuadmin_Tipousuadmin}" >
+										 <f:facet name="header">
+										<h:outputText value="Idtipousuadmin_Tipousuadmin"/>
+										</f:facet>
+										 <h:outputText value="#{administrativos.idtipousuadmin_Tipousuadmin}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{administrativos.email_Usuarios}" sortBy="#{administrativos.email_Usuarios}" >
+										 <f:facet name="header">
+										<h:outputText value="Email_Usuarios"/>
+										</f:facet>
+										 <h:outputText value="#{administrativos.email_Usuarios}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogAdministrativos"
+										actionListener="#{administrativosView.action_edit}">
+										<f:attribute name="selectedAdministrativos" value="#{administrativos}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{administrativosView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedAdministrativos" value="#{administrativos}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{administrativosView.action_new()}" update=":dialogAdministrativos" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogAdministrativos" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{administrativosView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelAdministrativos" header="Administrativos">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdusuadministrativo" value="Idusuadministrativo"/>
+									 <p:inputText id="txtIdusuadministrativo" binding="#{administrativosView.txtIdusuadministrativo}">
+									 <p:ajax update=":dialogAdministrativos" listener="#{administrativosView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgIdtipousuadmin_Tipousuadmin" value=" Idtipousuadmin_Tipousuadmin"/>
+									<p:inputText id="txtIdtipousuadmin_Tipousuadmin" disabled="true" binding="#{administrativosView.txtIdtipousuadmin_Tipousuadmin}"/>
+																		<h:outputText id="msgEmail_Usuarios" value=" Email_Usuarios"/>
+									<p:inputText id="txtEmail_Usuarios" disabled="true" binding="#{administrativosView.txtEmail_Usuarios}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{administrativosView.btnSave}" value="Save" action="#{administrativosView.action_save()}" update=":dialogAdministrativos :frm:panelDataTableAdministrativos" />
+									<p:commandButton id="btnClear" value="Clear" action="#{administrativosView.action_clear()}" update=":dialogAdministrativos" />
+									<p:commandButton id="btnExit" value="Exit" action="#{administrativosView.action_closeDialog()}" update=":dialogAdministrativos" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

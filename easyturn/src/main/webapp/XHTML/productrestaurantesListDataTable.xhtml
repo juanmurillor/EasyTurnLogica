@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableProductrestaurantes" header="ProductrestaurantesData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{productrestaurantesView.data}" var="productrestaurantes"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{productrestaurantes.idproductos}" sortBy="#{productrestaurantes.idproductos}" >
+										 <f:facet name="header">
+										<h:outputText value="idproductos"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.idproductos}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{productrestaurantes.cantidadproducto}" sortBy="#{productrestaurantes.cantidadproducto}" >
+										 <f:facet name="header">
+										<h:outputText value="Cantidadproducto"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.cantidadproducto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{productrestaurantes.descripcionproducto}" sortBy="#{productrestaurantes.descripcionproducto}" >
+										 <f:facet name="header">
+										<h:outputText value="Descripcionproducto"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.descripcionproducto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{productrestaurantes.imagenproducto}" sortBy="#{productrestaurantes.imagenproducto}" >
+										 <f:facet name="header">
+										<h:outputText value="Imagenproducto"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.imagenproducto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{productrestaurantes.nombreproducto}" sortBy="#{productrestaurantes.nombreproducto}" >
+										 <f:facet name="header">
+										<h:outputText value="Nombreproducto"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.nombreproducto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{productrestaurantes.precioproducto}" sortBy="#{productrestaurantes.precioproducto}" >
+										 <f:facet name="header">
+										<h:outputText value="Precioproducto"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.precioproducto}"/>
+										</p:column>   
+			                    									
+										<p:column filterBy="#{productrestaurantes.idrestaurante_Restaurante}" sortBy="#{productrestaurantes.idrestaurante_Restaurante}" >
+										 <f:facet name="header">
+										<h:outputText value="Idrestaurante_Restaurante"/>
+										</f:facet>
+										 <h:outputText value="#{productrestaurantes.idrestaurante_Restaurante}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogProductrestaurantes"
+										actionListener="#{productrestaurantesView.action_edit}">
+										<f:attribute name="selectedProductrestaurantes" value="#{productrestaurantes}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{productrestaurantesView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedProductrestaurantes" value="#{productrestaurantes}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{productrestaurantesView.action_new()}" update=":dialogProductrestaurantes" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogProductrestaurantes" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{productrestaurantesView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelProductrestaurantes" header="Productrestaurantes">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdproductos" value="Idproductos"/>
+									 <p:inputText id="txtIdproductos" binding="#{productrestaurantesView.txtIdproductos}">
+									 <p:ajax update=":dialogProductrestaurantes" listener="#{productrestaurantesView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgCantidadproducto" value=" Cantidadproducto"/>
+									<p:inputText id="txtCantidadproducto" disabled="true" binding="#{productrestaurantesView.txtCantidadproducto}"/>
+																		<h:outputText id="msgDescripcionproducto" value=" Descripcionproducto"/>
+									<p:inputText id="txtDescripcionproducto" disabled="true" binding="#{productrestaurantesView.txtDescripcionproducto}"/>
+																		<h:outputText id="msgImagenproducto" value=" Imagenproducto"/>
+									<p:inputText id="txtImagenproducto" disabled="true" binding="#{productrestaurantesView.txtImagenproducto}"/>
+																		<h:outputText id="msgNombreproducto" value=" Nombreproducto"/>
+									<p:inputText id="txtNombreproducto" disabled="true" binding="#{productrestaurantesView.txtNombreproducto}"/>
+																		<h:outputText id="msgPrecioproducto" value=" Precioproducto"/>
+									<p:inputText id="txtPrecioproducto" disabled="true" binding="#{productrestaurantesView.txtPrecioproducto}"/>
+																		<h:outputText id="msgIdrestaurante_Restaurante" value=" Idrestaurante_Restaurante"/>
+									<p:inputText id="txtIdrestaurante_Restaurante" disabled="true" binding="#{productrestaurantesView.txtIdrestaurante_Restaurante}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{productrestaurantesView.btnSave}" value="Save" action="#{productrestaurantesView.action_save()}" update=":dialogProductrestaurantes :frm:panelDataTableProductrestaurantes" />
+									<p:commandButton id="btnClear" value="Clear" action="#{productrestaurantesView.action_clear()}" update=":dialogProductrestaurantes" />
+									<p:commandButton id="btnExit" value="Exit" action="#{productrestaurantesView.action_closeDialog()}" update=":dialogProductrestaurantes" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+

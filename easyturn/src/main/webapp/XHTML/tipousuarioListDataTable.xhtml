@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">		
+
+		  			<h:form id="frm">								  		
+						
+						<p:panel id="panelDataTableTipousuario" header="TipousuarioData">
+							<p:growl id="men"/>				
+							<p:dataTable value="#{tipousuarioView.data}" var="tipousuario"
+								paginator="true" rows="5">
+																										<p:column filterBy="#{tipousuario.idtipousuario}" sortBy="#{tipousuario.idtipousuario}" >
+										 <f:facet name="header">
+										<h:outputText value="idtipousuario"/>
+										</f:facet>
+										 <h:outputText value="#{tipousuario.idtipousuario}"/>
+										 </p:column>
+			                    																									
+										<p:column filterBy="#{tipousuario.nombretipousuario}" sortBy="#{tipousuario.nombretipousuario}" >
+										 <f:facet name="header">
+										<h:outputText value="Nombretipousuario"/>
+										</f:facet>
+										 <h:outputText value="#{tipousuario.nombretipousuario}"/>
+										</p:column>   
+			                    			                    
+								<p:column headerText="Options">
+									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+										update=":dialogTipousuario"
+										actionListener="#{tipousuarioView.action_edit}">
+										<f:attribute name="selectedTipousuario" value="#{tipousuario}" />
+									</p:commandButton>
+									<p:commandButton id="btnDelete"									
+										title="Delete" actionListener="#{tipousuarioView.action_delete_datatable}"
+										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+										icon="ui-icon-trash" update="@form">
+										<f:attribute name="selectedTipousuario" value="#{tipousuario}" />
+									</p:commandButton>
+								</p:column>									                    
+							</p:dataTable>	
+						</p:panel>
+						<p:panel id="panelBoton">
+							<div align="center">
+								<p:commandButton id="btnNew" value="New"
+									action="#{tipousuarioView.action_new()}" update=":dialogTipousuario" />
+							</div>
+						</p:panel>						
+		   			</h:form>
+					<p:dialog id="dialogTipousuario" appendTo="@(body)" draggable="true"
+						closable="false" visible="#{tipousuarioView.showDialog}" resizable="false"
+						modal="true" width="500">
+						<h:form id="formDialog">
+							<p:messages id="msg" />
+							<p:panel id="panelTipousuario" header="Tipousuario">							
+							    <h:panelGrid columns="2" id="panelGrid" >
+																		 <h:outputText id="msgIdtipousuario" value="Idtipousuario"/>
+									 <p:inputText id="txtIdtipousuario" binding="#{tipousuarioView.txtIdtipousuario}">
+									 <p:ajax update=":dialogTipousuario" listener="#{tipousuarioView.listener_txtId}"/>
+									 </p:inputText>	
+																											
+																		<h:outputText id="msgNombretipousuario" value=" Nombretipousuario"/>
+									<p:inputText id="txtNombretipousuario" disabled="true" binding="#{tipousuarioView.txtNombretipousuario}"/>
+																		
+																    </h:panelGrid>
+							</p:panel>						   
+							<p:panel id="panelBotones">
+								<div align="center">					
+									<p:commandButton id="btnSave" binding="#{tipousuarioView.btnSave}" value="Save" action="#{tipousuarioView.action_save()}" update=":dialogTipousuario :frm:panelDataTableTipousuario" />
+									<p:commandButton id="btnClear" value="Clear" action="#{tipousuarioView.action_clear()}" update=":dialogTipousuario" />
+									<p:commandButton id="btnExit" value="Exit" action="#{tipousuarioView.action_closeDialog()}" update=":dialogTipousuario" />
+								</div>
+				</p:panel>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+
