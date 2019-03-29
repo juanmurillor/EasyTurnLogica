@@ -6,37 +6,49 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-	
 
-		<h:form id="menuform">
-							
-								<p:menubar toggleable="true">
-								
-									<p:submenu label="Master" icon="ui-icon-pencil">  
-							            
-							            	 								                    <p:menuitem value="Master Usuarios" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/usuarios.xhtml" />  
-											 								                    <p:menuitem value="Master Tipousuadmin" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuadmin.xhtml" />  
-											 								                    <p:menuitem value="Master Productrestaurantes" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/productrestaurantes.xhtml" />  
-											 								                    <p:menuitem value="Master Restaurante" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/restaurante.xhtml" />  
-											 								                    <p:menuitem value="Master Tipousuario" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuario.xhtml" />  
-											 								                    <p:menuitem value="Master Administrativos" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/administrativos.xhtml" />  
-											 							        </p:submenu>  
-															
-															
-							  
-							        <p:submenu label="Data Table" icon="ui-icon-document">
-							                								                    <p:menuitem value="Usuarios" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/usuariosListDataTable.xhtml" />  
-											 								                    <p:menuitem value="Tipousuadmin" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuadminListDataTable.xhtml" />  
-											 								                    <p:menuitem value="Productrestaurantes" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/productrestaurantesListDataTable.xhtml" />  
-											 								                    <p:menuitem value="Restaurante" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/restauranteListDataTable.xhtml" />  
-											 								                    <p:menuitem value="Tipousuario" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuarioListDataTable.xhtml" />  
-											 								                    <p:menuitem value="Administrativos" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/administrativosListDataTable.xhtml" />  
-											 							        </p:submenu>  
-							  
-						        	<p:menuitem value="Logout"
-										url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/j_spring_security_logout"
-										icon="ui-icon-close" />  
-						    
-			</p:menubar>
-		</h:form>
+
+	<h:form id="menuform">
+
+		<p:menubar toggleable="true">
+
+			<p:submenu label="Master" icon="ui-icon-pencil">
+
+				<p:menuitem value="Master Usuarios"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/usuarios.xhtml" />
+				<p:menuitem value="Master Tipousuadmin"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuadmin.xhtml" />
+				<p:menuitem value="Master Productrestaurantes"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/productrestaurantes.xhtml" />
+				<p:menuitem value="Master Restaurante"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/restaurante.xhtml" />
+				<p:menuitem value="Master Tipousuario"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuario.xhtml" />
+				<p:menuitem value="Master Administrativos"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/administrativos.xhtml" />
+			</p:submenu>
+
+
+
+			<p:submenu label="Data Table" icon="ui-icon-document">
+				<p:menuitem value="Usuarios"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/usuariosListDataTable.xhtml" />
+				<p:menuitem value="Tipousuadmin"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuadminListDataTable.xhtml" />
+				<p:menuitem value="Productrestaurantes"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/productrestaurantesListDataTable.xhtml" />
+				<p:menuitem value="Restaurante"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/restauranteListDataTable.xhtml" />
+				<p:menuitem value="Tipousuario"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/tipousuarioListDataTable.xhtml" />
+				<p:menuitem value="Administrativos"
+					url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/administrativosListDataTable.xhtml" />
+			</p:submenu>
+
+			<p:menuitem value="Logout"
+				url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/j_spring_security_logout"
+				icon="ui-icon-close" />
+
+		</p:menubar>
+	</h:form>
 </ui:composition>

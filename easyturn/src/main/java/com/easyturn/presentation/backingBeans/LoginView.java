@@ -1,6 +1,8 @@
 package com.easyturn.presentation.backingBeans;
 
+import com.easyturn.modelo.Usuarios;
 import com.easyturn.utilities.*;
+import com.easyturn.utilities.FacesUtils;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,9 +11,12 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 
 @ViewScoped
@@ -55,8 +60,25 @@ public class LoginView {
             SecurityContext securityContext = SecurityContextHolder.getContext();
             securityContext.setAuthentication(result);
 
-            FacesUtils.getHttpSession(true)
-                      .setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+            ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+            
+            Usuarios usuario=(Usuarios)FacesUtils.getfromSession("usuario");
+         
+            //FacesUtils.getHttpSession(true).setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+            
+            if (usuario.getTipousuario().getIdtipousuario()==1) {
+				FacesContext.getCurrentInstance().addMessage("",new FacesMessage(FacesMessage.SEVERITY_INFO,"Bienvenido, Usted ha ingresado como Restaurante",""));
+				System.out.println("Entre a Restaurante");
+				return "/restaurante/inicioRestaurante.xhtml";
+			}else if (usuario.getTipousuario().getIdtipousuario()==4) {
+				FacesContext.getCurrentInstance().addMessage("",new FacesMessage(FacesMessage.SEVERITY_INFO,"Bienvenido, Usted ha ingresado como Restaurante",""));
+				System.out.println("Entre a ADMIN");
+				return "/XHTML/initialMenu.xhtml";
+			}else if (usuario.getTipousuario().getIdtipousuario()==2) {
+				FacesContext.getCurrentInstance().addMessage("",new FacesMessage(FacesMessage.SEVERITY_INFO,"Bienvenido, Usted ha ingresado como Restaurante",""));
+				System.out.println("Entre a Administrador");
+				return "/administrador/inicioAdministrador.xhtml";
+			}
         } catch (AuthenticationException e) {
             FacesUtils.addErrorMessage("authfailed login or password");
 
