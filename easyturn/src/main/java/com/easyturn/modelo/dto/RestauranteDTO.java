@@ -3,6 +3,10 @@ package com.easyturn.modelo.dto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 
 import java.sql.*;
@@ -24,6 +28,8 @@ public class RestauranteDTO implements Serializable {
     private String nombrerestaurante;
     private Integer telefonorestaurante;
     private String email_Usuarios;
+    
+    
 
     public String getDescripcionrestaurante() {
         return descripcionrestaurante;

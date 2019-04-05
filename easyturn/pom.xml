@@ -259,7 +259,15 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1212.jre7</version>
-		</dependency>	
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-database -->
+<dependency>
+  <groupId>com.google.firebase</groupId>
+  <artifactId>firebase-admin</artifactId>
+  <version>6.7.0</version>
+</dependency>
+			
 	</dependencies>
 	
 	<build>
