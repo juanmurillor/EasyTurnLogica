@@ -16,7 +16,7 @@
              <property name="hibernate.connection.url"
                     value="jdbc:postgresql://127.0.0.1:5432/easyTurn" />
              <property name="hibernate.connection.username" value="postgres" />
-             <property name="hibernate.connection.password" value="jUAN1155326" />
+             <property name="hibernate.connection.password" value="postgres" />
         </properties>
      
     </persistence-unit>

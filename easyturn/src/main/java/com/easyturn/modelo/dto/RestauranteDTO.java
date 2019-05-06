@@ -26,7 +26,7 @@ public class RestauranteDTO implements Serializable {
     private Integer idrestaurante;
     private String imagenrestaurante;
     private String nombrerestaurante;
-    private Integer telefonorestaurante;
+    private Long telefonorestaurante;
     private String email_Usuarios;
     
     
@@ -63,11 +63,11 @@ public class RestauranteDTO implements Serializable {
         this.nombrerestaurante = nombrerestaurante;
     }
 
-    public Integer getTelefonorestaurante() {
+    public Long getTelefonorestaurante() {
         return telefonorestaurante;
     }
 
-    public void setTelefonorestaurante(Integer telefonorestaurante) {
+    public void setTelefonorestaurante(Long telefonorestaurante) {
         this.telefonorestaurante = telefonorestaurante;
     }
 

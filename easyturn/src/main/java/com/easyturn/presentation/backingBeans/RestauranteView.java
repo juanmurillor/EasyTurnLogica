@@ -212,7 +212,7 @@ public class RestauranteView implements Serializable {
                     txtImagenrestaurante));
             entity.setNombrerestaurante(FacesUtils.checkString(
                     txtNombrerestaurante));
-            entity.setTelefonorestaurante(FacesUtils.checkInteger(
+            entity.setTelefonorestaurante(FacesUtils.checkLong(
                     txtTelefonorestaurante));
             entity.setUsuarios((FacesUtils.checkString(txtEmail_Usuarios) != null)
                 ? businessDelegatorView.getUsuarios(FacesUtils.checkString(
@@ -241,7 +241,7 @@ public class RestauranteView implements Serializable {
                     txtImagenrestaurante));
             entity.setNombrerestaurante(FacesUtils.checkString(
                     txtNombrerestaurante));
-            entity.setTelefonorestaurante(FacesUtils.checkInteger(
+            entity.setTelefonorestaurante(FacesUtils.checkLong(
                     txtTelefonorestaurante));
             entity.setUsuarios((FacesUtils.checkString(txtEmail_Usuarios) != null)
                 ? businessDelegatorView.getUsuarios(FacesUtils.checkString(
@@ -313,7 +313,7 @@ public class RestauranteView implements Serializable {
                     imagenrestaurante));
             entity.setNombrerestaurante(FacesUtils.checkString(
                     nombrerestaurante));
-            entity.setTelefonorestaurante(FacesUtils.checkInteger(
+            entity.setTelefonorestaurante(FacesUtils.checkLong(
                     telefonorestaurante));
             businessDelegatorView.updateRestaurante(entity);
             FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYMODIFIED);

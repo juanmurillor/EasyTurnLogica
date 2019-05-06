@@ -26,7 +26,7 @@ public class Restaurante implements java.io.Serializable {
     private String descripcionrestaurante;
     private String imagenrestaurante;
     private String nombrerestaurante;
-    private Integer telefonorestaurante;
+    private Long telefonorestaurante;
     private Set<Productrestaurantes> productrestauranteses = new HashSet<Productrestaurantes>(0);
 
     public Restaurante() {
@@ -35,7 +35,7 @@ public class Restaurante implements java.io.Serializable {
     public Restaurante(Integer idrestaurante, String descripcionrestaurante,
         String imagenrestaurante, String nombrerestaurante,
         Set<Productrestaurantes> productrestauranteses,
-        Integer telefonorestaurante, Usuarios usuarios) {
+        Long telefonorestaurante, Usuarios usuarios) {
         this.idrestaurante = idrestaurante;
         this.usuarios = usuarios;
         this.descripcionrestaurante = descripcionrestaurante;
@@ -93,11 +93,11 @@ public class Restaurante implements java.io.Serializable {
     }
 
     @Column(name = "telefonorestaurante")
-    public Integer getTelefonorestaurante() {
+    public Long getTelefonorestaurante() {
         return this.telefonorestaurante;
     }
 
-    public void setTelefonorestaurante(Integer telefonorestaurante) {
+    public void setTelefonorestaurante(Long telefonorestaurante) {
         this.telefonorestaurante = telefonorestaurante;
     }
 

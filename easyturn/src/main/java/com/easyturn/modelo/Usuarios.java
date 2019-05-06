@@ -23,7 +23,7 @@ public class Usuarios implements java.io.Serializable {
 	private String apellido;
 	private String contraseña;
 	private String nombre;
-	private Integer telefono;
+	private Long telefono;
 	private Set<Administrativos> administrativoses = new HashSet<Administrativos>(0);
 	private Set<Restaurante> restaurantes = new HashSet<Restaurante>(0);
 
@@ -31,7 +31,7 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	public Usuarios(String email, Set<Administrativos> administrativoses, String apellido, String contraseña,
-			String nombre, Set<Restaurante> restaurantes, Integer telefono, Tipousuario tipousuario) {
+			String nombre, Set<Restaurante> restaurantes, Long telefono, Tipousuario tipousuario) {
 		this.email = email;
 		this.tipousuario = tipousuario;
 		this.apellido = apellido;
@@ -90,11 +90,11 @@ public class Usuarios implements java.io.Serializable {
 	}
 
 	@Column(name = "telefono")
-	public Integer getTelefono() {
+	public Long getTelefono() {
 		return this.telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(Long telefono) {
 		this.telefono = telefono;
 	}
 

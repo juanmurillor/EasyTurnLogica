@@ -23,7 +23,7 @@ private static final Logger log = LoggerFactory.getLogger(UsuariosDTO.class);
 		private  String contraseña;	
 		private  String email;	
 		private  String nombre;	
-		private  Integer telefono;	
+		private  Long telefono;	
 		private  Integer idtipousuario_Tipousuario;	
 		    
 		
@@ -63,11 +63,11 @@ private static final Logger log = LoggerFactory.getLogger(UsuariosDTO.class);
 		}
 		
 		
-		public Integer getTelefono (){
+		public Long getTelefono (){
 		 return telefono;
 		}
 		
-		public void setTelefono (Integer telefono ){
+		public void setTelefono (Long telefono ){
 		this.telefono = telefono;
 		}
 		
