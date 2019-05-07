@@ -114,7 +114,7 @@ public class ProductrestaurantesLogic implements IProductrestaurantesLogic {
                 throw new ZMessManager().new NullEntityExcepcion(
                     "Productrestaurantes");
             }
-
+            entity.setIdproductos(productrestaurantesDAO.getSecuencia());
             validateProductrestaurantes(entity);
 
             if (getProductrestaurantes(entity.getIdproductos()) != null) {
@@ -413,4 +413,9 @@ public class ProductrestaurantesLogic implements IProductrestaurantesLogic {
 
         return list;
     }
+    @Override
+	public List<Productrestaurantes> findProductByRestaurant(Integer id) throws Exception {
+        if(id==0L)throw new Exception("el id no puede ser nulo");
+		return productrestaurantesDAO.findProductByRestaurant(id);
+	}
 }

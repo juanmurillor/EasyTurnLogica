@@ -19,13 +19,19 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "restaurante", schema = "public")
 public class Restaurante implements java.io.Serializable {
+	
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @NotNull
     private Integer idrestaurante;
     @NotNull
     private Usuarios usuarios;
+    @NotNull
     private String descripcionrestaurante;
+    @NotNull
     private String imagenrestaurante;
+    @NotNull
     private String nombrerestaurante;
+    @NotNull
     private Long telefonorestaurante;
     private Set<Productrestaurantes> productrestauranteses = new HashSet<Productrestaurantes>(0);
 

@@ -448,4 +448,9 @@ public class BusinessDelegatorView implements IBusinessDelegatorView {
         throws Exception {
         administrativosLogic.validateAdministrativos(administrativos);
     }
+    
+    @Override
+	public List<Productrestaurantes> findProductByRestaurant(Integer id) throws Exception {
+		if(id==0L)throw new Exception("el id no puede ser nulo");
+		return productrestaurantesLogic.findProductByRestaurant(id);	}
 }

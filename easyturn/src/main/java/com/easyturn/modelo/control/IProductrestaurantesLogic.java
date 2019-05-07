@@ -62,4 +62,6 @@ public interface IProductrestaurantesLogic {
 
     public void validateProductrestaurantes(
         Productrestaurantes productrestaurantes) throws Exception;
+    
+    public List<Productrestaurantes> findProductByRestaurant(Integer id)throws Exception;
 }

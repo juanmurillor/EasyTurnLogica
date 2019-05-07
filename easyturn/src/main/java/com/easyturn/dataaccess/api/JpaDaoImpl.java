@@ -3,6 +3,8 @@ package com.easyturn.dataaccess.api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.easyturn.modelo.Productrestaurantes;
+
 import java.io.Serializable;
 
 import java.lang.reflect.ParameterizedType;
@@ -186,4 +188,10 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     public void setMaxResults(int maxResults) {
         this.maxResults = maxResults;
     }
+
+	@Override
+	public List<Productrestaurantes> findProductByRestaurant(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

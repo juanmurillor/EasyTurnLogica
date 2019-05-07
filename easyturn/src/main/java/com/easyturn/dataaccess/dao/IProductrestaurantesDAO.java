@@ -16,4 +16,6 @@ import java.util.Set;
 *
 */
 public interface IProductrestaurantesDAO extends Dao<Productrestaurantes, Integer> {
+
+	public Integer getSecuencia();
 }

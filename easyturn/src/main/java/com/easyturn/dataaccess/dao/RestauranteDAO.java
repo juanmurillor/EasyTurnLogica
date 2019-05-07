@@ -38,4 +38,11 @@ public class RestauranteDAO extends JpaDaoImpl<Restaurante, Integer>
         ApplicationContext ctx) {
         return (IRestauranteDAO) ctx.getBean("RestauranteDAO");
     }
+    
+    @Override
+	public Integer getSecuencia() {
+		javax.persistence.Query query = entityManager.createNativeQuery("select nextval('restaurante_idrestaurante_seq')");
+		return Integer.parseInt(query.getSingleResult().toString()) ;
+	}
+
 }

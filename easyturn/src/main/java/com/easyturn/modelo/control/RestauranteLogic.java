@@ -118,9 +118,9 @@ public class RestauranteLogic implements IRestauranteLogic {
             if (entity == null) {
                 throw new ZMessManager().new NullEntityExcepcion("Restaurante");
             }
-
+            entity.setIdrestaurante(restauranteDAO.getSecuencia());
             validateRestaurante(entity);
-
+            
             if (getRestaurante(entity.getIdrestaurante()) != null) {
                 throw new ZMessManager(ZMessManager.ENTITY_WITHSAMEKEY);
             }

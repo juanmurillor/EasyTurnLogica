@@ -17,14 +17,21 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name = "productrestaurantes", schema = "public")
 public class Productrestaurantes implements java.io.Serializable {
-    @NotNull
+	
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@NotNull
     private Integer idproductos;
     @NotNull
     private Restaurante restaurante;
+    @NotNull
     private Integer cantidadproducto;
+    @NotNull
     private String descripcionproducto;
+    @NotNull
     private String imagenproducto;
+    @NotNull
     private String nombreproducto;
+    @NotNull
     private Integer precioproducto;
 
     public Productrestaurantes() {

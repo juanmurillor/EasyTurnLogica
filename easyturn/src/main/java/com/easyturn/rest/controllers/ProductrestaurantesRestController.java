@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/productrestaurantes")
 public class ProductrestaurantesRestController {
@@ -94,6 +94,22 @@ public class ProductrestaurantesRestController {
             Productrestaurantes productrestaurantes = businessDelegatorView.getProductrestaurantes(idproductos);
 
             return productrestaurantesMapper.productrestaurantesToProductrestaurantesDTO(productrestaurantes);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return null;
+    }
+    @GetMapping(value = "/getProductByRestaurant/{FKRestaurantes}")
+    public List<ProductrestaurantesDTO> getProductByRestaurant(
+        @PathVariable("FKRestaurantes")
+    Integer fkrestaurantes) throws Exception {
+        try {
+            
+            
+            List<Productrestaurantes> productrestaurantes = businessDelegatorView.findProductByRestaurant(fkrestaurantes);
+
+           return productrestaurantesMapper.listProductrestaurantesToListProductrestaurantesDTO(productrestaurantes);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

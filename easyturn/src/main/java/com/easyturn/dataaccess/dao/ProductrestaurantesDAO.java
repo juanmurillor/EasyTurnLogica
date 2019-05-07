@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Scope;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -37,5 +39,19 @@ public class ProductrestaurantesDAO extends JpaDaoImpl<Productrestaurantes, Inte
     public static IProductrestaurantesDAO getFromApplicationContext(
         ApplicationContext ctx) {
         return (IProductrestaurantesDAO) ctx.getBean("ProductrestaurantesDAO");
+    }
+    
+    @Override
+    public Integer getSecuencia() {
+		javax.persistence.Query query = entityManager.createNativeQuery("select nextval('productrestaurantes_idproductos_seq')");
+		return Integer.parseInt(query.getSingleResult().toString()) ;
+	}
+    
+    @Override
+    public List<Productrestaurantes> findProductByRestaurant(Integer id){
+		String jpql=
+		"select pro FROM Productrestaurantes pro where pro.restaurante.idrestaurante="+id;
+		return entityManager.createQuery(jpql).getResultList();
+    	
     }
 }

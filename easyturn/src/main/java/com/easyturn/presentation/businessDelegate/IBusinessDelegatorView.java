@@ -209,4 +209,6 @@ public interface IBusinessDelegatorView {
 
     public void validateAdministrativos(Administrativos administrativos)
         throws Exception;
+    
+    public List<Productrestaurantes> findProductByRestaurant(Integer id)throws Exception;
 }
