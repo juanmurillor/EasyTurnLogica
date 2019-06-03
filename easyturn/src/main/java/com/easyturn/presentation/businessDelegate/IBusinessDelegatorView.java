@@ -211,4 +211,6 @@ public interface IBusinessDelegatorView {
         throws Exception;
     
     public List<Productrestaurantes> findProductByRestaurant(Integer id)throws Exception;
+    
+    public List<Restaurante> findRestauranteByUsuario(String email)throws Exception;
 }

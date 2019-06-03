@@ -12,9 +12,10 @@ import org.springframework.context.annotation.Scope;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -28,21 +29,26 @@ import javax.persistence.PersistenceContext;
  */
 @Scope("singleton")
 @Repository("RestauranteDAO")
-public class RestauranteDAO extends JpaDaoImpl<Restaurante, Integer>
-    implements IRestauranteDAO {
-    private static final Logger log = LoggerFactory.getLogger(RestauranteDAO.class);
-    @PersistenceContext
-    private EntityManager entityManager;
+public class RestauranteDAO extends JpaDaoImpl<Restaurante, Integer> implements IRestauranteDAO {
+	private static final Logger log = LoggerFactory.getLogger(RestauranteDAO.class);
+	@PersistenceContext
+	private EntityManager entityManager;
 
-    public static IRestauranteDAO getFromApplicationContext(
-        ApplicationContext ctx) {
-        return (IRestauranteDAO) ctx.getBean("RestauranteDAO");
-    }
-    
-    @Override
-	public Integer getSecuencia() {
-		javax.persistence.Query query = entityManager.createNativeQuery("select nextval('restaurante_idrestaurante_seq')");
-		return Integer.parseInt(query.getSingleResult().toString()) ;
+	public static IRestauranteDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (IRestauranteDAO) ctx.getBean("RestauranteDAO");
 	}
 
+	@Override
+	public Integer getSecuencia() {
+		javax.persistence.Query query = entityManager
+				.createNativeQuery("select nextval('restaurante_idrestaurante_seq')");
+		return Integer.parseInt(query.getSingleResult().toString());
+	}
+
+	@Override
+	public List<Restaurante> findRestauranteByUsuario(String email) {
+		String jpql = "select restaurante FROM Restaurante restaurante where restaurante.usuarios.email= '" + email+"'";
+		return entityManager.createQuery(jpql).getResultList();
+
+	}
 }

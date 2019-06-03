@@ -27,93 +27,87 @@ import java.util.List;
 @RestController
 @RequestMapping("/productrestaurantes")
 public class ProductrestaurantesRestController {
-    private static final Logger log = LoggerFactory.getLogger(ProductrestaurantesRestController.class);
-    @Autowired
-    private IBusinessDelegatorView businessDelegatorView;
-    @Autowired
-    private IProductrestaurantesMapper productrestaurantesMapper;
+	private static final Logger log = LoggerFactory.getLogger(ProductrestaurantesRestController.class);
+	@Autowired
+	private IBusinessDelegatorView businessDelegatorView;
+	@Autowired
+	private IProductrestaurantesMapper productrestaurantesMapper;
 
-    @PostMapping(value = "/saveProductrestaurantes")
-    public void saveProductrestaurantes(
-        @RequestBody
-    ProductrestaurantesDTO productrestaurantesDTO) throws Exception {
-        try {
-            Productrestaurantes productrestaurantes = productrestaurantesMapper.productrestaurantesDTOToProductrestaurantes(productrestaurantesDTO);
+	@PostMapping(value = "/saveProductrestaurantes")
+	public void saveProductrestaurantes(@RequestBody ProductrestaurantesDTO productrestaurantesDTO) throws Exception {
+		try {
+			Productrestaurantes productrestaurantes = productrestaurantesMapper
+					.productrestaurantesDTOToProductrestaurantes(productrestaurantesDTO);
 
-            businessDelegatorView.saveProductrestaurantes(productrestaurantes);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            throw e;
-        }
-    }
+			businessDelegatorView.saveProductrestaurantes(productrestaurantes);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			throw e;
+		}
+	}
 
-    @DeleteMapping(value = "/deleteProductrestaurantes/{idproductos}")
-    public void deleteProductrestaurantes(
-        @PathVariable("idproductos")
-    Integer idproductos) throws Exception {
-        try {
-            Productrestaurantes productrestaurantes = businessDelegatorView.getProductrestaurantes(idproductos);
+	@DeleteMapping(value = "/deleteProductrestaurantes/{idproductos}")
+	public void deleteProductrestaurantes(@PathVariable("idproductos") Integer idproductos) throws Exception {
+		try {
+			Productrestaurantes productrestaurantes = businessDelegatorView.getProductrestaurantes(idproductos);
 
-            businessDelegatorView.deleteProductrestaurantes(productrestaurantes);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            throw e;
-        }
-    }
+			businessDelegatorView.deleteProductrestaurantes(productrestaurantes);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			throw e;
+		}
+	}
 
-    @PutMapping(value = "/updateProductrestaurantes/")
-    public void updateProductrestaurantes(
-        @RequestBody
-    ProductrestaurantesDTO productrestaurantesDTO) throws Exception {
-        try {
-            Productrestaurantes productrestaurantes = productrestaurantesMapper.productrestaurantesDTOToProductrestaurantes(productrestaurantesDTO);
+	@PutMapping(value = "/updateProductrestaurantes/")
+	public void updateProductrestaurantes(@RequestBody ProductrestaurantesDTO productrestaurantesDTO) throws Exception {
+		try {
+			Productrestaurantes productrestaurantes = productrestaurantesMapper
+					.productrestaurantesDTOToProductrestaurantes(productrestaurantesDTO);
 
-            businessDelegatorView.updateProductrestaurantes(productrestaurantes);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            throw e;
-        }
-    }
+			businessDelegatorView.updateProductrestaurantes(productrestaurantes);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			throw e;
+		}
+	}
 
-    @GetMapping(value = "/getDataProductrestaurantes")
-    public List<ProductrestaurantesDTO> getDataProductrestaurantes()
-        throws Exception {
-        try {
-            return businessDelegatorView.getDataProductrestaurantes();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            throw e;
-        }
-    }
+	@GetMapping(value = "/getDataProductrestaurantes")
+	public List<ProductrestaurantesDTO> getDataProductrestaurantes() throws Exception {
+		try {
+			return businessDelegatorView.getDataProductrestaurantes();
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			throw e;
+		}
+	}
 
-    @GetMapping(value = "/getProductrestaurantes/{idproductos}")
-    public ProductrestaurantesDTO getProductrestaurantes(
-        @PathVariable("idproductos")
-    Integer idproductos) throws Exception {
-        try {
-            Productrestaurantes productrestaurantes = businessDelegatorView.getProductrestaurantes(idproductos);
+	@GetMapping(value = "/getProductrestaurantes/{idproductos}")
+	public ProductrestaurantesDTO getProductrestaurantes(@PathVariable("idproductos") Integer idproductos)
+			throws Exception {
+		try {
+			Productrestaurantes productrestaurantes = businessDelegatorView.getProductrestaurantes(idproductos);
 
-            return productrestaurantesMapper.productrestaurantesToProductrestaurantesDTO(productrestaurantes);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+			return productrestaurantesMapper.productrestaurantesToProductrestaurantesDTO(productrestaurantes);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
 
-        return null;
-    }
-    @GetMapping(value = "/getProductByRestaurant/{FKRestaurantes}")
-    public List<ProductrestaurantesDTO> getProductByRestaurant(
-        @PathVariable("FKRestaurantes")
-    Integer fkrestaurantes) throws Exception {
-        try {
-            
-            
-            List<Productrestaurantes> productrestaurantes = businessDelegatorView.findProductByRestaurant(fkrestaurantes);
+		return null;
+	}
 
-           return productrestaurantesMapper.listProductrestaurantesToListProductrestaurantesDTO(productrestaurantes);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+	@GetMapping(value = "/getProductByRestaurant/{FKRestaurantes}")
+	public List<ProductrestaurantesDTO> getProductByRestaurant(@PathVariable("FKRestaurantes") Integer fkrestaurantes)
+			throws Exception {
+		try {
 
-        return null;
-    }
+			List<Productrestaurantes> productrestaurantes = businessDelegatorView
+					.findProductByRestaurant(fkrestaurantes);
+
+			return productrestaurantesMapper.listProductrestaurantesToListProductrestaurantesDTO(productrestaurantes);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
+
+		return null;
+	}
 }

@@ -420,4 +420,13 @@ public class RestauranteLogic implements IRestauranteLogic {
 
         return list;
     }
+    
+    @Override
+    public List<Restaurante> findRestauranteByUsuario(String email)throws Exception{
+    	if ((email == null) || (email.equals(""))) {
+			throw new Exception("El Email no puede ser nulo");
+		}else {
+			return restauranteDAO.findRestauranteByUsuario(email);
+		}
+    };
 }

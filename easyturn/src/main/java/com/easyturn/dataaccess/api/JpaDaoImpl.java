@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.easyturn.modelo.Productrestaurantes;
+import com.easyturn.modelo.Restaurante;
 
 import java.io.Serializable;
 
@@ -191,6 +192,11 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
 
 	@Override
 	public List<Productrestaurantes> findProductByRestaurant(Integer id) {
+		return null;
+	}
+	
+	@Override
+	public List<Restaurante> findRestauranteByUsuario(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -7,6 +7,7 @@ import com.easyturn.modelo.dto.UsuariosDTO;
 
 import com.easyturn.presentation.businessDelegate.IBusinessDelegatorView;
 
+import org.hibernate.validator.constraints.Email;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -82,8 +84,8 @@ public class UsuariosRestController {
         }
     }
 
-    @GetMapping(value = "/getUsuarios/{email}")
-    public UsuariosDTO getUsuarios(@PathVariable("email")
+    @GetMapping(value = "/getUsuarios")
+    public UsuariosDTO getUsuarios(@RequestParam("email")
     String email) throws Exception {
         try {
             Usuarios usuarios = businessDelegatorView.getUsuarios(email);

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.easyturn.modelo.Productrestaurantes;
+import com.easyturn.modelo.Restaurante;
 
 
 /**
@@ -43,4 +44,6 @@ public interface Dao<T, PK extends Serializable> {
     List<T> findByProperty(String propertyName, Object value);
 
     List<Productrestaurantes> findProductByRestaurant(Integer id);
+    
+    List<Restaurante> findRestauranteByUsuario(String email);
 }
